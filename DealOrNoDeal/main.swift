@@ -12,6 +12,9 @@ import Foundation
 // INPUT SECTION OF PROGRAM
 //
 var briefcasesOpened = -1
+var briefcaseOpenedThisTime = 0
+var bankerOffer = 0
+
 
 // Loop until valid input provided by user
 while true {
@@ -59,7 +62,7 @@ var briefcaseValues = [100, 500, 1_000, 5_000, 10_000, 25_000, 50_000, 100_000, 
 // getBriefcaseOpened
 //
 // PURPOSE:
-//
+
 // Asks the user for a briefcase that is opened during a turn, as shown in the example.
 // When the input is invalid, the prompt is repeated.
 //
@@ -73,10 +76,60 @@ var briefcaseValues = [100, 500, 1_000, 5_000, 10_000, 25_000, 50_000, 100_000, 
 func getBriefcaseOpened(onTurn turn: Int) -> Int {
     
     // STUDENTS: Complete this function
-    
-    
-    // The statement below can be modified
-    return 0
+    // Loop until valid input provided by user
+    while true {
+        
+        // Ask for input
+        print("Briefcase opened, in turn \(turn), was:")
+        guard let inputGiven = readLine() else {
+            
+            // No input given, return to top of loop and ask again
+            continue
+        }
+        
+        // Attempt to make input into an integer
+        guard let integerGiven = Int(inputGiven) else {
+            
+            // Could not make input into an integer, so return to top and ask again
+            return briefcaseOpenedThisTime
+
+        }
+        
+        
+        // Ask the user how much the baker offered
+        
+        func bankersOffer () -> Int {
+        
+            while true {
+               print (" What was the bakers offer?")
+                
+                guard let offer = readLine() else {
+                    
+                // return to the top and ask again
+                continue
+            }
+                // imput to an integer
+                guard Int(offer) != nil else {
+                    
+                // return to the top and ask again
+                    continue
+                }
+        // Check that integer is in desired range
+        // REMEMBER: Guard statement conditions describe what we WANT
+        guard integerGiven > 0, integerGiven < 11 else {
+            
+            // Integer not in desired range, return to top and ask again
+            continue
+            
+        }
+        
+        // If we've made it here, the input is valid, so return which breiefcase was opened
+        briefcasesOpened = integerGiven
+          
+        
+         return briefcaseOpenedThisTime
+    }
+
     
 }
 
@@ -91,13 +144,4 @@ for turn in 1...briefcasesOpened {
     
 }
 
-// STUDENTS: Do any remaining calculations you might need below.
 
-
-
-
-//
-// OUTPUT SECTION OF PROGRAM
-//
-
-// STUDENTS: Now tell the player whether to take the deal, or not.
