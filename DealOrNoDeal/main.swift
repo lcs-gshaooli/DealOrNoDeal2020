@@ -144,4 +144,28 @@ for turn in 1...briefcasesOpened {
     
 }
 
+// STUDENTS: Do any remaining calculations you might need below.
+func findAverage()-> Double {
+   var total = 0
+        }
+for value in briefcaseValues {
+    total += value
+}
+    
+return Double(total) / Double(10 - briefcasesOpened)
 
+        }
+        
+    var average = findAverage
+    var offer = bankersOfferFunc
+    
+func dealOrNoDeal() {
+    if average() > Double (bankersOffer) {
+        print("No Deal")
+    } else {
+        print("Deal")
+    }
+    dealOrNoDeal()
+}
+
+}
